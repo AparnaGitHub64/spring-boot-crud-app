@@ -109,33 +109,12 @@ public class CustomerController {
         return "add-customer"; // Ensure this matches the correct template for the edit form
     }
 
-    // @GetMapping("/customers/delete/{id}")
-    // public String deleteCustomer(@PathVariable("id") Long id, RedirectAttributes
-    // redirectAttributes) {
-    // try {
-    // // Try deleting the customer
-    // boolean isDeleted = customerService.deleteCustomerById(id);
-
-    // if (isDeleted) {
-    // // If deletion is successful
-    // redirectAttributes.addFlashAttribute("successMessage", "Customer deleted
-    // successfully!");
-    // } else {
-    // // If customer wasn't found or not deleted
-    // redirectAttributes.addFlashAttribute("errorMessage", "Customer not found or
-    // could not be deleted.");
-    // }
-    // } catch (Exception e) {
-    // // Handle any unexpected exceptions and display a user-friendly message
-    // redirectAttributes.addFlashAttribute("errorMessage", "An error occurred while
-    // deleting the customer.");
-    // System.out.println("Error during customer deletion: " + e.getMessage()); //
-    // Debug log
-    // }
-
-    // // Redirect back to the customer list
-    // return "redirect:/customers";
-    // }
+    @GetMapping("/customers/delete/{id}")
+    public String deleteCustomer(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        customerService.deleteCustomer(id); // Using deleteCustomer instead of deleteCustomerById
+        redirectAttributes.addFlashAttribute("successMessage", "Customer deleted successfully!");
+        return "redirect:/customers"; // Redirect to the customers list after deletion
+    }
 
 }
 
