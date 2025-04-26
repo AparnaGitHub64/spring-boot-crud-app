@@ -20,8 +20,8 @@ public class Customer {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @NotEmpty(message = "First name is required")
-    @Size(min = 2, message = "First name must be at least 2 characters long")
+    @NotEmpty(message = "Last name is required")
+    @Size(min = 2, message = "Last name name must be at least 2 characters long")
     @Column(name = "last_name", nullable = false)
     private String lastName;
 

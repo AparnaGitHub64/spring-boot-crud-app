@@ -71,8 +71,8 @@ public class CustomerController {
 
     @PostMapping("/customers/save")
     public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer,
-            RedirectAttributes redirectAttributes,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
         // Make sure the BindingResult comes after @Valid
         if (bindingResult.hasErrors()) {
             // Log the errors for debugging purposes
